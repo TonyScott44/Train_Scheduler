@@ -1,11 +1,10 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyAaiY1tUdKKMEgg0j_qxyVVErvIaHZmgEo",
-    authDomain: "train-scheduler-5a026.firebaseapp.com",
-    databaseURL: "https://train-scheduler-5a026.firebaseio.com",
-    projectId: "train-scheduler-5a026",
-    storageBucket: "",
-    messagingSenderId: "1012715125282"
+    apiKey: "AIzaSyDoUSZAFPRE0CwEe3X2B1DcuRNH34KVeds",
+    authDomain: "practice-9f0f7.firebaseapp.com",
+    databaseURL: "https://practice-9f0f7.firebaseio.com",
+    storageBucket: "practice-9f0f7.appspot.com",
+    messagingSenderId: "214881515661"
 };
 firebase.initializeApp(config);
 
@@ -41,28 +40,28 @@ $("#add-user").on("click", function() {
     event.preventDefault();
 });
 
-// // Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
-// dataRef.ref().on("child_added", function(childSnapshot) {
-//
-//
-//     // full list of items to the well
-//     $("#train-list").append("<tr> <td> " + childSnapshot.val().tName +
-//         " </td><td> " + childSnapshot.val().dest +
-//         " </td><td> " + childSnapshot.val().freq +
-//         " </td><td> " + childSnapshot.val().nxtArr +
-//         " </td><td> " + childSnapshot.val().minAwy + " </td></tr>");
-//
-//     // Handle the errors
-// }, function(errorObject) {
-//     console.log("Errors handled: " + errorObject.code);
-// });
-//
-// dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-//
-//     // Change the HTML to reflect
-//     $("#name-display").appendChild(snapshot.val().tName);
-//     $("#dest-display").text(snapshot.val().dest);
-//     $("#freq-display").text(snapshot.val().freq);
-//     $("#first-display").text(snapshot.val().nxtArr);
-//     $("#away-display").text(snapshot.val().minAwy);
-// });
+// Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
+dataRef.ref().on("child_added", function(childSnapshot) {
+
+
+    // full list of items to the well
+    $("#train-list").append("<tr> <td> " + childSnapshot.val().tName +
+        " </td><td> " + childSnapshot.val().dest +
+        " </td><td> " + childSnapshot.val().freq +
+        " </td><td> " + childSnapshot.val().nxtArr +
+        " </td><td> " + childSnapshot.val().minAwy + " </td></tr>");
+
+    // Handle the errors
+}, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+});
+
+dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+
+    // Change the HTML to reflect
+    $("#name-display").appendChild(snapshot.val().tName);
+    $("#dest-display").text(snapshot.val().dest);
+    $("#freq-display").text(snapshot.val().freq);
+    $("#first-display").text(snapshot.val().nxtArr);
+    $("#away-display").text(snapshot.val().minAwy);
+});
