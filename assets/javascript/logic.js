@@ -3,11 +3,11 @@ var config = {
     apiKey: "AIzaSyDoUSZAFPRE0CwEe3X2B1DcuRNH34KVeds",
     authDomain: "practice-9f0f7.firebaseapp.com",
     databaseURL: "https://practice-9f0f7.firebaseio.com",
+    projectId: "practice-9f0f7",
     storageBucket: "practice-9f0f7.appspot.com",
     messagingSenderId: "214881515661"
 };
 firebase.initializeApp(config);
-
 
 // Get a reference to the database service
 var database = firebase.database();
@@ -41,27 +41,37 @@ $("#add-user").on("click", function() {
 });
 
 // Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
-dataRef.ref().on("child_added", function(childSnapshot) {
+database.ref().on("child_added", function(childSnapshot) {
 
+    // Log everything that's coming out of snapshot
+    console.log(childSnapshot.val().tName);
+    console.log(childSnapshot.val().dest);
+    console.log(childSnapshot.val().nxtArr);
+    console.log(childSnapshot.val().freq);
+    console.log(childSnapshot.val().minAwy);
 
     // full list of items to the well
-    $("#train-list").append("<tr> <td> " + childSnapshot.val().tName +
-        " </td><td> " + childSnapshot.val().dest +
-        " </td><td> " + childSnapshot.val().freq +
-        " </td><td> " + childSnapshot.val().nxtArr +
-        " </td><td> " + childSnapshot.val().minAwy + " </td></tr>");
+    $("#train-list").append("<div class='well'><span class='member-name'> " + childSnapshot.val().name +
+        " </span><span class='train-name'> " + childSnapshot.val().tName +
+        " </span><span class='train-destination'> " + childSnapshot.val().dest +
+        " </span><span class='train-frequency'> " + childSnapshot.val().freq +
+        "</span><span class='first-train'>" + childSnapshot.val().nxtArr +
+        "</span><span class='min-away'>" + childSnapshot.val().minAwy +
+        "</span></div>");
 
     // Handle the errors
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
 
-dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+// dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+//
+//     // Change the HTML to reflect
+//     $("#name-display").text(snapshot.val().trainName);
+//     $("#dest-display").text(snapshot.val().destination);
+//     $("#freq-display").text(snapshot.val().frequency);
+//     $("#first-display").text(snapshot.val().nextArrival);
+//     $("#away-display").text(snapshot.val().nextArrival);
+//
+// });
 
-    // Change the HTML to reflect
-    $("#name-display").appendChild(snapshot.val().tName);
-    $("#dest-display").text(snapshot.val().dest);
-    $("#freq-display").text(snapshot.val().freq);
-    $("#first-display").text(snapshot.val().nxtArr);
-    $("#away-display").text(snapshot.val().minAwy);
-});
