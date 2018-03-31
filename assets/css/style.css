@@ -7,5 +7,13 @@ h1{
 
 body{
     width: 960px;
-    margin: 0 auto;
+    margin: 0;
+}
+
+#container {
+    margin: 20px 0 0 270px;
+}
+
+#train_data {
+    margin: 20px 0 0 270px;
 }

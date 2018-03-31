@@ -22,10 +22,10 @@ var minutesAway = 0;
 $("#add-user").on("click", function() {
 
     // Get the input values
-    trainName = $("#train_name").val().trim();
-    destination = $("#destinationX").val().trim();
-    nextArrival = $("#firstTrain").val().trim();
-    frequency = $("#frequencyX").val().trim();
+    trainName = $("#train-name").val().trim();
+    destination = $("#train-destination").val().trim();
+    nextArrival = $("#next-arrival").val().trim();
+    frequency = $("#train-frequency").val().trim();
 
     database.ref().push({
         tName: trainName,
@@ -51,27 +51,17 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val().minAwy);
 
     // full list of items to the well
-    $("#train-list").append("<div class='well'><span class='member-name'> " + childSnapshot.val().name +
-        " </span><span class='train-name'> " + childSnapshot.val().tName +
-        " </span><span class='train-destination'> " + childSnapshot.val().dest +
-        " </span><span class='train-frequency'> " + childSnapshot.val().freq +
-        "</span><span class='first-train'>" + childSnapshot.val().nxtArr +
-        "</span><span class='min-away'>" + childSnapshot.val().minAwy +
-        "</span></div>");
+    $("#trainData").append("<tr> <td> " + childSnapshot.val().tName +
+        " </td><td> " + childSnapshot.val().dest +
+        " </td><td> " + childSnapshot.val().freq +
+        " </td><td> " + childSnapshot.val().nxtArr +
+        " </td><td> " + childSnapshot.val().minAwy +
+        "</td></tr>");
 
     // Handle the errors
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
 
-// dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-//
-//     // Change the HTML to reflect
-//     $("#name-display").text(snapshot.val().trainName);
-//     $("#dest-display").text(snapshot.val().destination);
-//     $("#freq-display").text(snapshot.val().frequency);
-//     $("#first-display").text(snapshot.val().nextArrival);
-//     $("#away-display").text(snapshot.val().nextArrival);
-//
-// });
+
 
