@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- HTML5 Character Encoding -->
+    <meta charset="UTF-8"> 
+
+    <!-- Tab Title     -->
+    <title>United Rail Systems</title>
+
+    <!-- Tab Image (Favicon) -->
+    <link rel="shortcut icon" href="assets/images/trainFavicon.png" type="image/x-icon" />
+
+    <!-- Bootstrap 4.3.1 CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Reference to external CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- LINK TO FIREBASE GOES HERE -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+
+     <!-- Moment.js Reference -->
+     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700" rel="stylesheet"> 
+
+</head>
+<body>
+
+    <img id="background" src="assets/images/bground.jpg">
+
+    <!-- Navigation -->
+    <div class="row">
+
+        <div class="col-12 col-md-12">
+                
+            <nav id="navBar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#"><img id="logo" src="assets/images/unitedRailLogo.png"></a>
+                </div>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                </div>
+            </nav>
+
+        </div>
+
+    </div>
+
+    <!-- Gate Agent Form -->
+    <div class="row">
+
+            <div class="col-12 col-md-12">
+                <div id="addTrain" class="container">
+                    <div class="jumbotron">
+                            <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Add Train</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="train-name">Train Name</label>
+                                                <input class="form-control" id="train-name" type="text">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="train-destination">Destination</label>
+                                                <input class="form-control" id="train-destination" type="text">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="first-train">First Train Time (HH:MM - Military Time)</label>
+                                                <input class="form-control" id="first-train" type="text">
+                                            </div>
+                                            <div class="form-group">
+                                                 <label for="train-frequency">Frequency(min)</label>
+                                                 <input class="form-control" id="train-frequency" type="text">
+                                             </div>
+                                            <button class="btn btn-primary" id="add-user" type="submit">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                    </div>
+                </div>       
+            </div>
+    
+        </div>
+
+    <!-- Train Feed -->
+    <div class="row">
+        
+        <div class="col-12 col-md-12">
+            <div id="trainFeed" class="container">
+                <div class="jumbotron">
+                        <div id="train_data" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"></h3>
+                                </div>
+                                <table class="table">
+                            
+                                    <!--Table Head-->
+                                    <thead>
+                                    <tr>
+                                        <b>
+                                            <th>Train Name</th>
+                                            <th>Destination</th>
+                                            <th>Frequency (min)</th>
+                                            <th>Next Arrival</th>
+                                            <th>Minutes Away</th>
+                                        </b>
+                                    </tr>
+                                    </thead>
+                            
+                                    <!--Table Body-->
+                                    <tbody id="trainData">
+                            
+                            
+                                    </tbody>
+                            
+                                </table>
+                            
+                            </div>
+                </div>
+            </div>
+            
+                
+        </div>
+
+    </div>
+
+    
+
+    <!-- Footer -->
+    <div id="footer" class="row">
+
+        <div class="col-12 col-md-12">
+            <nav  class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div id="navRow" class="row">
+                    <div class="col-10 col-md-10">
+                    </div>
+                    <div class="col-2 col-md-2">
+                        <h1 id="logoText">Train Scheduler <span id="v2">&nbsp;v1.0</span></h1>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        
+        
+    </div>
+
+    <!-- Bootstrap 4.3.1 JS CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+     <!-- jQuery -->
+     <script src="https://code.jquery.com/jquery.js"></script>
+     <!-- Reference to external JavaScript File -->
+     <script src="assets/javascript/logic.js"></script>
+    
+
+
+</body>
+</html> 
