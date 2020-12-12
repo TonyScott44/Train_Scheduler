@@ -47,8 +47,8 @@ $("#add-user").on("click", function() {
 
     } else {
         
-        minAwy = moment().diff(moment(mTrainTime), "minutes");
-        minAwy = Math.abs(minAwy);
+        //minAwy = moment().diff(moment(mTrainTime), "minutes");
+        //minAwy = Math.abs(minAwy);
 
         database.ref().push({
             nxtArr: eTrainTime,
