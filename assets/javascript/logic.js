@@ -46,12 +46,10 @@ $("#add-user").on("click", function() {
         });
 
     } else {
-        
-        //minAwy = moment().diff(moment(mTrainTime), "minutes");
-        //minAwy = Math.abs(minAwy);
+
 
         database.ref().push({
-            nxtArr: eTrainTime,
+            nxtArr: eNxtArvl,
             tName: trainName,
             dest: destination,
             freq: frequency,
